@@ -11,9 +11,9 @@ A small static website for **https://neidlinger.org**, hosted on GitHub Pages. P
 
 The old Hugo output remains on `gh-pages`. Its source is in [jneidlinger-hugo](https://github.com/jneidlinger/jneidlinger-hugo). Neither needs to build or deploy this homepage.
 
-## Activate GitHub Pages
+## GitHub Pages publishing
 
-After this change is merged, open [Settings → Pages](https://github.com/jneidlinger/jneidlinger.github.io/settings/pages):
+The site publishes from **main / (root)** with **neidlinger.org** as its custom domain. To review or recreate that configuration, open [Settings → Pages](https://github.com/jneidlinger/jneidlinger.github.io/settings/pages):
 
 1. Set **Source** to **Deploy from a branch**.
 2. Select **main** and **/ (root)**, then save.
@@ -23,7 +23,7 @@ After this change is merged, open [Settings → Pages](https://github.com/jneidl
 
 The `CNAME` file matches the custom domain. `.nojekyll` bypasses Jekyll processing. Commits to `main` publish automatically when Pages is configured as above.
 
-## Repair the domain in Cloudflare
+## Domain configuration in Cloudflare
 
 Public DNS checked on September 29, 2026 showed:
 
@@ -32,9 +32,11 @@ Public DNS checked on September 29, 2026 showed:
 - No AAAA records or `www` CNAME were returned.
 - GitHub Pages was enabled, publishing `/` from `gh-pages`, with `www.neidlinger.org` as its custom domain and HTTPS enforcement enabled. Its last successful build was January 28, 2022.
 
+These were the settings before the repair. The apex and `www` records were corrected on September 29, 2026, and GitHub Pages was switched to `main`. The existing wildcard A record for other subdomains was preserved.
+
 Namecheap is the registrar, but **Cloudflare manages the active DNS**. Keep the existing nameservers at Namecheap.
 
-In Cloudflare, select **neidlinger.org → DNS → Records**. Change the existing website records so that the final set is:
+In Cloudflare, select **neidlinger.org → DNS → Records**. The website records should remain:
 
 | Type | Name | Content | Proxy status | TTL |
 | --- | --- | --- | --- | --- |
@@ -43,8 +45,6 @@ In Cloudflare, select **neidlinger.org → DNS → Records**. Change the existin
 | A | @ | 185.199.110.153 | DNS only | Auto |
 | A | @ | 185.199.111.153 | DNS only | Auto |
 | CNAME | www | jneidlinger.github.io | DNS only | Auto |
-
-Replace the apex A record targeting `206.189.191.222` with the first GitHub address, then add the other three. Replace the existing `www` A record with the CNAME above. If Cloudflare requires removing the `www` A record before adding a CNAME, record its original value first.
 
 Only change the website records for `@` and `www`. Preserve email (MX/TXT), verification records, and unrelated subdomains. Use DNS only during GitHub DNS validation and HTTPS provisioning. GitHub redirects `www.neidlinger.org` to `neidlinger.org` when both records and the Pages custom domain are configured correctly.
 
