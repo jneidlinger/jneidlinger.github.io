@@ -7,7 +7,9 @@ A small static website for **https://neidlinger.org**, hosted on GitHub Pages. P
 - Update the homepage text and links in `index.html`.
 - Change the design in `assets/style.css`.
 - Light and dark colors follow the visitor’s system preference through `prefers-color-scheme`, including the 404 page.
-- Replace `assets/portrait.png` to update the photo. The current photo and contact links were recovered from the old `gh-pages` branch.
+- Add sites and apps as list items in the homepage’s Projects section.
+- The homepage uses the Signature layout: name, contact links, and projects, with no portrait.
+- A future blog can live at `/blog`; add its navigation link when the first post is published.
 - Preview locally with `python3 -m http.server 8000` and open http://localhost:8000.
 
 The old Hugo output remains on `gh-pages`. Its source is in [jneidlinger-hugo](https://github.com/jneidlinger/jneidlinger-hugo). Neither needs to build or deploy this homepage.
