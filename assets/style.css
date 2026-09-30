@@ -1,5 +1,5 @@
 :root {
-  color-scheme: light;
+  color-scheme: light dark;
   --paper: #f5f3ee;
   --ink: #28372e;
   --muted: #62695f;
@@ -8,6 +8,15 @@
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--ink);
   background: var(--paper);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #171c19;
+    --ink: #e7e8df;
+    --muted: #aeb4a9;
+    --line: #353e37;
+    --accent: #e59c7e;
+  }
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -33,9 +42,7 @@ h1 span { font-style: italic; }
 .intro-description { max-width: 410px; font-size: 16px; line-height: 1.8; color: var(--muted); margin: 0 0 28px; }
 .intro-link { font-size: 13px; display: inline-flex; align-items: center; gap: 26px; padding-bottom: 7px; border-bottom: 1px solid var(--ink); }
 .portrait { width: 100%; max-width: 310px; margin: 12px 0 0 auto; }
-.portrait img { width: 100%; height: auto; display: block; border-radius: 130px 130px 5px 5px; filter: contrast(.95); }
-.portrait figcaption { display: flex; justify-content: space-between; margin-top: 14px; color: var(--muted); font: 10px ui-monospace, SFMono-Regular, Consolas, monospace; }
-.portrait figcaption span:last-child { color: var(--accent); font-size: 15px; }
+.portrait img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; display: block; border-radius: 50%; filter: contrast(.95); }
 .elsewhere { border-top: 1px solid var(--line); padding: 32px 0 64px; scroll-margin-top: 32px; }
 .section-heading { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 28px; gap: 20px; }
 .section-heading h2 { font-weight: 500; font-size: 17px; margin: 0; }

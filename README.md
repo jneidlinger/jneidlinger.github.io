@@ -6,6 +6,7 @@ A small static website for **https://neidlinger.org**, hosted on GitHub Pages. P
 
 - Update the homepage text and links in `index.html`.
 - Change the design in `assets/style.css`.
+- Light and dark colors follow the visitor’s system preference through `prefers-color-scheme`, including the 404 page.
 - Replace `assets/portrait.png` to update the photo. The current photo and contact links were recovered from the old `gh-pages` branch.
 - Preview locally with `python3 -m http.server 8000` and open http://localhost:8000.
 
